@@ -12,7 +12,6 @@ config_version=3
 
 config/name="Random Generic Platformer"
 run/main_scene="res://scenes/StartMenu.tscn"
-config/icon="res://icon.png"
 
 [rendering]
 
