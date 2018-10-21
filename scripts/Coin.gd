@@ -3,9 +3,12 @@ extends Area2D
 signal coin_taken
 
 func _ready():
-    self.connect("body_entered", self, "body_overlapped")
+    self.connect("body_entered", self, "_on_body_entered")
 
-func body_overlapped(body):
+func _on_body_entered(body):
     if body.name == "Player":
-        emit_signal("coin_taken")
-        self.queue_free()
+        _take_coin()
+
+func _take_coin():
+    emit_signal("coin_taken")
+    self.queue_free()
