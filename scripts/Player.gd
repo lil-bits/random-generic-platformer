@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal update_hud
-
 const UP = Vector2(0.0, -1.0)
 const GRAVITY = 20
 const MAX_SPEED = 200

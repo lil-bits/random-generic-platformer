@@ -1,11 +1,7 @@
 extends CanvasLayer
 
-var coins = 0
-
 func _ready():
-    get_node("/root/Level").connect("update_hud", self, "update_values")
-
-    update_values({"coins": coins})
+    update_values({"coins": 0})
 
 func show_message(message):
     $Message.text = message
