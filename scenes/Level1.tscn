@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,13 @@
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/CoinSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 290.025, 263.971, 0, 0, 0, 0, 288.025, 329.971, 0, 0, 0, 0, 286.025, 395.971, 0, 0, 0, 0, 353.025, 413.971, 0, 0, 0, 0, 405.025, 414.971, 0, 0, 0, 0, 528.025, 353.971, 0, 0, 0, 0, 694.025, 296.971, 0, 0, 0, 0, 562.225, 167.171, 0, 0, 0, 0, 677.225, 36.1711, 0, 0, 0, 0, 502.225, -26.8289, 0, 0, 0, 0, 395.225, -24.8289, 0, 0, 0, 0, 310.225, -28.8289, 0, 0, 0, 0, 105.225, -83.8289, 0, 0, 0, 0, -27.7747, -29.8289, 0, 0, 0, 0, 100.225, 223.171 )
+}
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
 
@@ -49,6 +56,7 @@ __meta__ = {
 
 [node name="CoinSpawner" parent="." index="4" instance=ExtResource( 6 )]
 
+curve = SubResource( 1 )
 coin_scene = ExtResource( 7 )
 
 
