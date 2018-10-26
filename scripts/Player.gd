@@ -9,14 +9,8 @@ const JUMP_HEIGHT_HIGH = -550
 
 var motion = Vector2()
 
-
-func _ready():
-    pass
-
-
 func _process(delta):
     pass
-
 
 func _physics_process(delta):
     motion.y += GRAVITY
