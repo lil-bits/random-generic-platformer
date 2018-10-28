@@ -10,8 +10,6 @@
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
 
-id = "1-2"
-
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -160, 160 )
@@ -19,7 +17,6 @@ position = Vector2( -160, 160 )
 [node name="WorldComplete" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 544, 160 )
-target_world = "res://scenes/Level1.tscn"
 
 [node name="Enemy" parent="." index="2" instance=ExtResource( 4 )]
 

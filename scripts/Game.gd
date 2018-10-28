@@ -12,3 +12,4 @@ var levels = {
         "name": "Second level",
     }
 }
+var current_level = null

@@ -2,7 +2,7 @@ extends Control
 
 func _on_StartGame_pressed():
     print("start game pressed")
-    get_tree().change_scene("scenes/Level1.tscn")
+    get_tree().change_scene("scenes/world/World.tscn")
 
 
 func _on_QuitGame_pressed():
