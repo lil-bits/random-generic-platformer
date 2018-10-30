@@ -8,9 +8,7 @@
 [ext_resource path="res://tiles/DirtAutoTile.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=7]
 
-[node name="Level" instance=ExtResource( 1 )]
-
-level_name = "Second level"
+[node name="Level" index="0" instance=ExtResource( 1 )]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -19,7 +17,6 @@ position = Vector2( -160, 160 )
 [node name="WorldComplete" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 544, 160 )
-target_world = "res://scenes/Level1.tscn"
 
 [node name="Enemy" parent="." index="2" instance=ExtResource( 4 )]
 
