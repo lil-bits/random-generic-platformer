@@ -12,4 +12,7 @@ var levels = {
         "name": "Second level",
     }
 }
-var current_level = null
+var current_level_id = null
+
+func get_current_level():
+    return levels[current_level_id]

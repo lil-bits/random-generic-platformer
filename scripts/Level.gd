@@ -15,7 +15,7 @@ func _ready():
     for coin in get_tree().get_nodes_in_group("coins"):
         coin.connect("coin_taken", self, "_increment_coins")
 
-    $HUD.show_start_level_message(Game.current_level.name)
+    $HUD.show_start_level_message(Game.get_current_level().name)
 
 func _on_trap_triggered():
     get_tree().change_scene("res://scenes/StartMenu.tscn")
