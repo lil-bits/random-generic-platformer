@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=8]
 
+
 [sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
