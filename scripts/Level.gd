@@ -18,10 +18,10 @@ func _ready():
     $HUD.show_start_level_message(Game.current_level.name)
 
 func _on_trap_triggered():
-    get_tree().change_scene("scenes/StartMenu.tscn")
+    get_tree().change_scene("res://scenes/StartMenu.tscn")
 
 func _on_enemy_touched():
-    get_tree().change_scene("scenes/StartMenu.tscn")
+    get_tree().change_scene("res://scenes/StartMenu.tscn")
 
 func _increment_coins():
     coins += 1
