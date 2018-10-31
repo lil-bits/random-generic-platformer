@@ -16,3 +16,32 @@ var current_level_id = null
 
 func get_current_level():
     return levels[current_level_id]
+
+var save_slots = [
+    {
+        'levels': {}
+    }
+]
+var current_save_slot_id = 0
+
+func save_level_progress(level_id, coins):
+    var current_save_slot = save_slots[current_save_slot_id]
+
+    if current_save_slot.levels.has(Game.current_level_id):
+        if coins > current_save_slot.levels[Game.current_level_id].coins:
+            current_save_slot.levels[Game.current_level_id].coins = coins
+    else:
+        current_save_slot.levels[Game.current_level_id] = {
+            "coins": coins
+        }
+
+func count_coins_in_save_slot(id):
+    var total_coins = 0
+
+    for level_progress in save_slots[id].levels.values():
+        total_coins += level_progress.coins
+
+    return total_coins
+
+func count_coins_in_current_save_slot():
+    return count_coins_in_save_slot(current_save_slot_id)
