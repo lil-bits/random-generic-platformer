@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 30.2717, 29.2621 )
 
-[node name="TrapSpike" type="Area2D"]
+[node name="TrapSpike" type="Area2D" index="0"]
 
 position = Vector2( 224.323, 414.938 )
 input_pickable = true
@@ -21,7 +21,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 time_initial_delay = 0.0
 time_disabled = 2.0
-time_fadein = 0.5
+time_fade_in = 0.5
 time_enabled = 0.5
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -34,5 +34,15 @@ _sections_unfolded = [ "Material", "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 0
+wait_time = 9.08
+one_shot = true
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
