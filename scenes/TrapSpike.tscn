@@ -6,11 +6,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30.2717, 29.2621 )
+extents = Vector2( 32, 32 )
 
 [node name="TrapSpike" type="Area2D"]
 
-position = Vector2( 224.323, 414.938 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -19,6 +18,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 time_initial_delay = 0.0
 time_disabled = 2.0
 time_fadein = 0.5
@@ -27,12 +27,12 @@ time_enabled = 0.5
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0, 1, 0, 1 )
-position = Vector2( -0.401306, 1.20386 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Visibility" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 

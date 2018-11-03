@@ -16,7 +16,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 290.025, 263.971, 0, 0, 0, 0, 288.025, 329.971, 0, 0, 0, 0, 286.025, 395.971, 0, 0, 0, 0, 353.025, 413.971, 0, 0, 0, 0, 405.025, 414.971, 0, 0, 0, 0, 528.025, 353.971, 0, 0, 0, 0, 694.025, 296.971, 0, 0, 0, 0, 562.225, 167.171, 0, 0, 0, 0, 677.225, 36.1711, 0, 0, 0, 0, 502.225, -26.8289, 0, 0, 0, 0, 395.225, -24.8289, 0, 0, 0, 0, 310.225, -28.8289, 0, 0, 0, 0, 105.225, -83.8289, 0, 0, 0, 0, -27.7747, -29.8289, 0, 0, 0, 0, 100.225, 223.171 )
 }
 
-[node name="Level" index="0" instance=ExtResource( 1 )]
+[node name="Level" instance=ExtResource( 1 )]
 
 id = "1-1"
 
@@ -27,6 +27,7 @@ position = Vector2( 352, 224 )
 [node name="LevelExit" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 288 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
