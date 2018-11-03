@@ -5,6 +5,6 @@
 [node name="Level" type="Node"]
 
 script = ExtResource( 1 )
-level_name = null
+id = null
 
 
