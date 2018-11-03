@@ -8,7 +8,7 @@
 [ext_resource path="res://tiles/DirtAutoTile.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=7]
 
-[node name="Level" index="0" instance=ExtResource( 1 )]
+[node name="Level" instance=ExtResource( 1 )]
 
 id = "1-2"
 
@@ -51,21 +51,17 @@ __meta__ = {
 
 [node name="TrapSpike" parent="." index="5" instance=ExtResource( 7 )]
 
-position = Vector2( 161.398, 158.513 )
+position = Vector2( 161, 160 )
 
 [node name="TrapSpike2" parent="." index="6" instance=ExtResource( 7 )]
 
-position = Vector2( 226.752, 158.513 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+position = Vector2( 225, 160 )
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+time_initial_delay = 0.5
 
 [node name="TrapSpike3" parent="." index="7" instance=ExtResource( 7 )]
 
-position = Vector2( 224.752, 158.513 )
-time_initial_delay = 0.5
-
-[node name="TrapSpike4" parent="." index="8" instance=ExtResource( 7 )]
-
-position = Vector2( 289.752, 158.513 )
+position = Vector2( 289, 160 )
 time_initial_delay = 1.0
 
 
