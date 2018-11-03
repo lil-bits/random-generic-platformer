@@ -21,7 +21,6 @@ func _process(delta):
         var enter_level = Input.is_action_pressed("ui_select")
 
         if enter_level:
-            Game.current_level = active_level
             get_tree().change_scene(active_level.scene)
 
 
