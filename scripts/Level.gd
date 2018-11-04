@@ -7,8 +7,9 @@ var coins = 0
 func _ready():
     assert(has_node("Player"))
     assert(has_node("HUD"))
+    assert(has_node("LevelExit"))
 
-    Game.current_level = Game.levels[id]
+    Game.current_level_id = id
 
     for enemy in get_tree().get_nodes_in_group("enemies"):
         enemy.connect("enemy_touched", self, "_on_enemy_touched")
@@ -19,7 +20,9 @@ func _ready():
     for coin in get_tree().get_nodes_in_group("coins"):
         coin.connect("coin_taken", self, "_increment_coins")
 
-    $HUD.show_start_level_message(Game.current_level.name)
+    $LevelExit.connect("level_finished", self, "_on_level_finished")
+
+    $HUD.show_start_level_message(Game.get_current_level().name)
 
 func _on_trap_triggered():
     get_tree().change_scene("res://scenes/StartMenu.tscn")
@@ -30,3 +33,7 @@ func _on_enemy_touched():
 func _increment_coins():
     coins += 1
     $HUD.update_values({"coins": coins})
+
+func _on_level_finished():
+    Game.save_level_progress(Game.current_level_id, coins)
+    get_tree().change_scene("res://scenes/world/World.tscn")

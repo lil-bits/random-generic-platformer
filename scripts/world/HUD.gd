@@ -5,3 +5,6 @@ func show_message(message):
 
 func clear_message():
     $Message.text = ""
+
+func update_values(values):
+    $Container/Label.text = "x{coins}".format({"coins": values.coins})

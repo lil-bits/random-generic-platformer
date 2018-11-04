@@ -21,7 +21,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 time_initial_delay = 0.0
 time_disabled = 2.0
-time_fadein = 0.5
+time_fade_in = 0.5
 time_enabled = 0.5
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -34,5 +34,15 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 0
+wait_time = 9.08
+one_shot = true
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
