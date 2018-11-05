@@ -1,11 +1,15 @@
 extends KinematicBody2D
 
+const Math = preload("res://scripts/Math.gd")
+
 const UP = Vector2(0.0, -1.0)
 const GRAVITY = 20
 const MAX_SPEED = 200
 const ACCELERATION = 50
 const JUMP_HEIGHT_LOW = -420
 const JUMP_HEIGHT_HIGH = -550
+const DRAG_FACTOR_LAND = 0.0001
+const DRAG_FACTOR_AIR = 0.1
 
 var motion = Vector2()
 
@@ -20,7 +24,7 @@ func _physics_process(delta):
     var jump_low = Input.is_action_just_pressed("ui_down")
     var jump_high = Input.is_action_just_pressed("ui_up")
     var is_idle = not go_left and not go_right
-    var apply_friction = is_idle
+    var apply_drag = is_idle
 
     if go_right:
         motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
@@ -38,14 +42,14 @@ func _physics_process(delta):
             motion.y = JUMP_HEIGHT_HIGH
         elif jump_low:
             motion.y = JUMP_HEIGHT_LOW
-        if apply_friction:
-            motion.x = lerp(motion.x, 0, 0.2)
+        if apply_drag:
+            motion.x = Math.decay(motion.x, 0, DRAG_FACTOR_LAND, delta)
     else:
         if motion.y < 0:
             $AnimatedSprite.play("Jump")
         else:
             $AnimatedSprite.play("Fall")
-        if apply_friction:
-            motion.x = lerp(motion.x, 0, 0.05)
+        if apply_drag:
+            motion.x = Math.decay(motion.x, 0, DRAG_FACTOR_AIR, delta)
 
     motion = move_and_slide(motion, UP)

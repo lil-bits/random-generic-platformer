@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
+const Math = preload("res://scripts/Math.gd")
+
 const SPEED = 200
+const DRAG_FACTOR = 0.0001
 
 var motion = Vector2()
 
@@ -22,7 +25,7 @@ func _physics_process(delta):
     if go_down:
         motion.y = SPEED
 
-    motion.x = lerp(motion.x, 0, 0.2)
-    motion.y = lerp(motion.y, 0, 0.2)
+    motion.x = Math.decay(motion.x, 0, DRAG_FACTOR, delta)
+    motion.y = Math.decay(motion.y, 0, DRAG_FACTOR, delta)
 
     motion = move_and_slide(motion)
