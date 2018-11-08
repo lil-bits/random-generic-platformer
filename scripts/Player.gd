@@ -11,26 +11,26 @@ const JUMP_HEIGHT_HIGH = -550
 const DRAG_FACTOR_LAND = 0.0001
 const DRAG_FACTOR_AIR = 0.1
 
-var motion = Vector2()
+var _motion = Vector2()
 var _apply_drag = false
 
 func _process(delta):
-    if _apply_drag or motion.x == 0:
+    if _apply_drag or _motion.x == 0:
         $AnimatedSprite.play("Idle")
-    elif motion.x > 0:
+    elif _motion.x > 0:
         $AnimatedSprite.flip_h = false
         $AnimatedSprite.play("Run")
-    elif motion.x < 0:
+    elif _motion.x < 0:
         $AnimatedSprite.flip_h = true
         $AnimatedSprite.play("Run")
 
-    if motion.y < 0:
+    if _motion.y < 0:
         $AnimatedSprite.play("Jump")
-    elif motion.y > 0:
+    elif _motion.y > 0:
         $AnimatedSprite.play("Fall")
 
 func _physics_process(delta):
-    motion.y += GRAVITY
+    _motion.y += GRAVITY
 
     var go_left = Input.is_action_pressed("ui_left")
     var go_right = Input.is_action_pressed("ui_right")
@@ -40,19 +40,19 @@ func _physics_process(delta):
     _apply_drag = is_idle
 
     if go_right:
-        motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
+        _motion.x = min(_motion.x + ACCELERATION, MAX_SPEED)
     elif go_left:
-        motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
+        _motion.x = max(_motion.x - ACCELERATION, -MAX_SPEED)
 
     if is_on_floor():
         if jump_high:
-            motion.y = JUMP_HEIGHT_HIGH
+            _motion.y = JUMP_HEIGHT_HIGH
         elif jump_low:
-            motion.y = JUMP_HEIGHT_LOW
+            _motion.y = JUMP_HEIGHT_LOW
         if _apply_drag:
-            motion.x = Math.decay(motion.x, 0, DRAG_FACTOR_LAND, delta)
+            _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_LAND, delta)
     else:
         if _apply_drag:
-            motion.x = Math.decay(motion.x, 0, DRAG_FACTOR_AIR, delta)
+            _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_AIR, delta)
 
-    motion = move_and_slide(motion, UP)
+    _motion = move_and_slide(_motion, UP)
