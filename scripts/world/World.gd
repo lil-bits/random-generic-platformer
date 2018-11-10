@@ -1,5 +1,7 @@
 extends Node
 
+var active_level = null
+
 func _ready():
     assert(has_node("Player"))
     assert(has_node("HUD"))
@@ -14,8 +16,20 @@ func _ready():
 
     $HUD.update_values({ "coins": Game.count_coins_in_current_save_slot() })
 
+func _process(delta):
+    if active_level:
+        var enter_level = Input.is_action_just_pressed("ui_select")
+
+        if enter_level:
+            Game.current_level_id = active_level
+            get_tree().change_scene(Game.get_current_level().scene)
+
 func _on_level_area_entered(level_id):
+    active_level = level_id
+
     $HUD.show_message(Game.levels[level_id].name)
 
 func _on_level_area_exited():
+    active_level = null
+
     $HUD.clear_message()
