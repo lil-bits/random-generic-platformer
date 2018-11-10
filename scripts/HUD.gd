@@ -9,7 +9,8 @@ func show_message(message):
 
 func show_start_level_message(message):
     show_message(message)
-    yield(get_tree().create_timer(2.0), "timeout")
+    $Timer.start()
+    yield($Timer, "timeout")
     $Message.hide()
 
 func update_values(values):
