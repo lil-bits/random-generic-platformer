@@ -20,8 +20,8 @@ func _physics_process(delta):
     _motion.y += GRAVITY
     _motion.x = SPEED * _direction
 
-    for i in range(self.get_slide_count()):
-        if self.get_slide_collision(i).collider.name == "Player":
+    for body in $Area2D.get_overlapping_bodies():
+        if body.name == "Player":
             emit_signal("enemy_touched")
 
     _motion = move_and_slide(_motion, UP)
