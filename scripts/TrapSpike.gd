@@ -25,8 +25,7 @@ func _ready():
 func _physics_process(delta):
     if _state == TrapSpikeState.Enabled:
         for body in self.get_overlapping_bodies():
-            if body.name == "Player":
-                emit_signal("trap_triggered")
+            emit_signal("trap_triggered")
 
 func _go_to_enabled():
     _restart_timer_with(time_enabled)
