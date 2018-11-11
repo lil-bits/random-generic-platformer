@@ -16,11 +16,11 @@ extents = Vector2( 32, 32 )
 [node name="Enemy" type="KinematicBody2D"]
 
 input_pickable = true
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 4
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -38,7 +38,7 @@ position = Vector2( 30, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 33 )
-collision_mask = 1
+collision_mask = 4
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
@@ -48,8 +48,10 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 2
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
