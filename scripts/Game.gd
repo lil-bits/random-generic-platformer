@@ -45,3 +45,11 @@ func count_coins_in_save_slot(id):
 
 func count_coins_in_current_save_slot():
     return count_coins_in_save_slot(current_save_slot_id)
+
+func is_level_completed(id):
+    return id in save_slots[current_save_slot_id].levels
+
+func coins_in_level(id):
+    assert(id in save_slots[current_save_slot_id].levels)
+
+    return save_slots[current_save_slot_id].levels[id].coins

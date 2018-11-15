@@ -11,6 +11,12 @@ func _ready():
 
     $Sprite.texture = texture
 
+    if Game.is_level_completed(level_id):
+        $Completed/CoinCount.text = "x{coins}".format({
+            "coins": Game.coins_in_level(level_id)
+        })
+        $Completed.show()
+
     connect("body_entered", self, "_on_area_entered")
     connect("body_exited", self, "_on_area_exited")
 
