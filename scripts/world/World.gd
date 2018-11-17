@@ -10,6 +10,8 @@ func _ready():
         level.connect("level_area_entered", self, "_on_level_area_entered")
         level.connect("level_area_exited", self, "_on_level_area_exited")
 
+    # If level id is set, it means player just left a level. She's put to given
+    # level's position and level id is cleared (mostly for debugging purposes).
     if Game.current_level_id:
         $Player.position = get_node(Game.get_current_level().entrance_node).position
         Game.current_level_id = null
