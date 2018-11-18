@@ -17,6 +17,10 @@ run/main_scene="res://scenes/StartMenu.tscn"
 
 Game="*res://scripts/Game.gd"
 
+[display]
+
+window/size/resizable=false
+
 [importer_defaults]
 
 texture={
