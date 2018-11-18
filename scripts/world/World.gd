@@ -10,6 +10,9 @@ func _ready():
         level.connect("level_area_entered", self, "_on_level_area_entered")
         level.connect("level_area_exited", self, "_on_level_area_exited")
 
+    $WorldMenu.connect("menu_activated", self, "_on_menu_activated")
+    $WorldMenu.connect("menu_deactivated", self, "_on_menu_deactivated")
+
     # If level id is set, it means player just left a level. She's put to given
     # level's position and level id is cleared (mostly for debugging purposes).
     if Game.current_level_id:
@@ -35,3 +38,9 @@ func _on_level_area_exited():
     active_level = null
 
     $HUD.clear_message()
+
+func _on_menu_activated():
+    get_tree().paused = true
+
+func _on_menu_deactivated():
+    get_tree().paused = false

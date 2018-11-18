@@ -21,6 +21,9 @@ func _ready():
         coin.connect("coin_taken", self, "_increment_coins")
 
     $LevelExit.connect("level_finished", self, "_on_level_finished")
+    $LevelMenu.connect("menu_activated", self, "_on_menu_activated")
+    $LevelMenu.connect("menu_deactivated", self, "_on_menu_deactivated")
+    $LevelMenu.connect("level_exited", self, "_on_level_exited")
 
     $HUD.show_start_level_message(Game.get_current_level().name)
 
@@ -36,4 +39,13 @@ func _increment_coins():
 
 func _on_level_finished():
     Game.save_level_progress(Game.current_level_id, coins)
+    get_tree().change_scene("res://scenes/world/World.tscn")
+
+func _on_menu_activated():
+    get_tree().paused = true
+
+func _on_menu_deactivated():
+    get_tree().paused = false
+
+func _on_level_exited():
     get_tree().change_scene("res://scenes/world/World.tscn")
