@@ -4,10 +4,7 @@
 [ext_resource path="res://scenes/LevelMenu.tscn" type="PackedScene" id=2]
 
 [node name="Level" type="Node"]
-
 script = ExtResource( 1 )
-id = null
 
-[node name="LevelMenu" parent="." index="0" instance=ExtResource( 2 )]
-
+[node name="LevelMenu" parent="." instance=ExtResource( 2 )]
 
