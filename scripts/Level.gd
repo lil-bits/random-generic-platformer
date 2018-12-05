@@ -28,10 +28,10 @@ func _ready():
     $HUD.show_start_level_message(Game.get_current_level().name)
 
 func _on_trap_triggered():
-    get_tree().change_scene("res://scenes/StartMenu.tscn")
+    get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
 
 func _on_enemy_touched():
-    get_tree().change_scene("res://scenes/StartMenu.tscn")
+    get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
 
 func _increment_coins():
     coins += 1
@@ -39,7 +39,7 @@ func _increment_coins():
 
 func _on_level_finished():
     Game.save_level_progress(Game.current_level_id, coins)
-    get_tree().change_scene("res://scenes/world/World.tscn")
+    get_tree().call_deferred("change_scene", "res://scenes/world/World.tscn")
 
 func _on_menu_activated():
     get_tree().paused = true
@@ -48,4 +48,4 @@ func _on_menu_deactivated():
     get_tree().paused = false
 
 func _on_level_exited():
-    get_tree().change_scene("res://scenes/world/World.tscn")
+    get_tree().call_deferred("change_scene", "res://scenes/world/World.tscn")
