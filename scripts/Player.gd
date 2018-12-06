@@ -13,6 +13,7 @@ const DRAG_FACTOR_AIR = 0.1
 
 var _motion = Vector2()
 var _apply_drag = false
+var _jumping = false
 
 func _process(delta):
     if _apply_drag or _motion.x == 0:
@@ -47,12 +48,23 @@ func _physics_process(delta):
     if is_on_floor():
         if jump_high:
             _motion.y = JUMP_HEIGHT_HIGH
+            _jumping = true
         elif jump_low:
             _motion.y = JUMP_HEIGHT_LOW
+            _jumping = true
+
         if _apply_drag:
             _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_LAND, delta)
     else:
         if _apply_drag:
             _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_AIR, delta)
 
-    _motion = move_and_slide(_motion, UP)
+    if _jumping and _motion.y > 0:
+        _jumping = false
+
+    var snap = Vector2(0, 32)
+
+    if _jumping:
+        snap = Vector2(0, 0)
+
+    _motion = move_and_slide_with_snap(_motion, snap, UP)
