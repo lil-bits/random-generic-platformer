@@ -25,10 +25,11 @@ func _process(delta):
         $AnimatedSprite.flip_h = true
         $AnimatedSprite.play("Run")
 
-    if _motion.y < 0:
-        $AnimatedSprite.play("Jump")
-    elif _motion.y > 0:
-        $AnimatedSprite.play("Fall")
+    if not is_on_floor():
+        if _motion.y < 0:
+            $AnimatedSprite.play("Jump")
+        elif _motion.y > 0:
+            $AnimatedSprite.play("Fall")
 
 func _physics_process(delta):
     _motion.y += GRAVITY
