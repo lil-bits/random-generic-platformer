@@ -9,60 +9,37 @@
 [ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=7]
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
-
 id = "1-2"
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
-
 position = Vector2( -160, 160 )
 
 [node name="LevelExit" parent="." index="1" instance=ExtResource( 3 )]
-
 position = Vector2( 544, 160 )
 
 [node name="Enemy" parent="." index="2" instance=ExtResource( 4 )]
-
 position = Vector2( 401, 288 )
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
 
 [node name="TileMap" type="TileMap" parent="." index="4"]
-
-mode = 0
 tile_set = ExtResource( 6 )
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
 collision_layer = 4
 collision_mask = 0
-occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 65532, 0, 6, 65533, 0, 196609, 65534, 0, 196609, 65535, 0, 196609, 0, 0, 196609, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 131076, 7, 0, 196609, 8, 0, 196609, 9, 0, 7, 131068, 0, 65541, 65542, 0, 131077, 65545, 0, 65541, 196604, 0, 65541, 131081, 0, 65541, 262140, 0, 8, 262141, 0, 65536, 262142, 0, 2, 196610, 0, 196608, 196611, 0, 196609, 196612, 0, 196610, 196616, 0, 196608, 196617, 0, 196612, 327676, 0, 131073, 327677, 0, 196619, 327678, 0, 65539, 327679, 0, 2, 262153, 0, 65541, 393212, 0, 65537, 393213, 0, 131072, 393214, 0, 131072, 393215, 0, 65547, 327680, 0, 196609, 327681, 0, 196609, 327682, 0, 196609, 327683, 0, 196609, 327684, 0, 196609, 327685, 0, 196609, 327686, 0, 196609, 327687, 0, 196609, 327688, 0, 196609, 327689, 0, 65543 )
-_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="TrapSpike" parent="." index="5" instance=ExtResource( 7 )]
-
 position = Vector2( 161, 160 )
 
 [node name="TrapSpike2" parent="." index="6" instance=ExtResource( 7 )]
-
 position = Vector2( 225, 160 )
-_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 time_initial_delay = 0.5
 
 [node name="TrapSpike3" parent="." index="7" instance=ExtResource( 7 )]
-
 position = Vector2( 289, 160 )
 time_initial_delay = 1.0
-
 

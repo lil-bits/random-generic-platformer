@@ -3,10 +3,6 @@
 [ext_resource path="res://scripts/CoinSpawner.gd" type="Script" id=1]
 
 [node name="CoinSpawner" type="Path2D"]
-
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = null
 script = ExtResource( 1 )
-coin_scene = null
-
 
