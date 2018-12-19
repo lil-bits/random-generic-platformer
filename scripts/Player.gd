@@ -10,9 +10,12 @@ const JUMP_HEIGHT_LOW = -420
 const JUMP_HEIGHT_HIGH = -550
 const DRAG_FACTOR_LAND = 0.0001
 const DRAG_FACTOR_AIR = 0.1
+const SNAP_TO_FLOOR = Vector2(0, 32)
+const NO_SNAP = Vector2(0, 0)
 
 var _motion = Vector2()
 var _apply_drag = false
+var _jumping = false
 
 func _process(delta):
     if _apply_drag or _motion.x == 0:
@@ -24,10 +27,11 @@ func _process(delta):
         $AnimatedSprite.flip_h = true
         $AnimatedSprite.play("Run")
 
-    if _motion.y < 0:
-        $AnimatedSprite.play("Jump")
-    elif _motion.y > 0:
-        $AnimatedSprite.play("Fall")
+    if not is_on_floor():
+        if _motion.y < 0:
+            $AnimatedSprite.play("Jump")
+        elif _motion.y > 0:
+            $AnimatedSprite.play("Fall")
 
 func _physics_process(delta):
     _motion.y += GRAVITY
@@ -47,12 +51,23 @@ func _physics_process(delta):
     if is_on_floor():
         if jump_high:
             _motion.y = JUMP_HEIGHT_HIGH
+            _jumping = true
         elif jump_low:
             _motion.y = JUMP_HEIGHT_LOW
+            _jumping = true
+
         if _apply_drag:
             _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_LAND, delta)
     else:
         if _apply_drag:
             _motion.x = Math.decay(_motion.x, 0, DRAG_FACTOR_AIR, delta)
 
-    _motion = move_and_slide(_motion, UP)
+    if _jumping and _motion.y > 0:
+        _jumping = false
+
+    var snap = SNAP_TO_FLOOR
+
+    if _jumping:
+        snap = NO_SNAP
+
+    _motion = move_and_slide_with_snap(_motion, snap, UP)

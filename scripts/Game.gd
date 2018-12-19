@@ -10,7 +10,12 @@ var levels = {
         "scene": "res://scenes/Level2.tscn",
         "entrance_node": "/root/World/Levels/1-2",
         "name": "Second level",
-    }
+    },
+    "1-3": {
+        "scene": "res://scenes/Level3.tscn",
+        "entrance_node": "/root/World/Levels/1-3",
+        "name": "Platform level",
+    },
 }
 var current_level_id = null
 
