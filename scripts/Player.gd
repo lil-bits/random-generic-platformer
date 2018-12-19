@@ -10,6 +10,8 @@ const JUMP_HEIGHT_LOW = -420
 const JUMP_HEIGHT_HIGH = -550
 const DRAG_FACTOR_LAND = 0.0001
 const DRAG_FACTOR_AIR = 0.1
+const SNAP_TO_FLOOR = Vector2(0, 32)
+const NO_SNAP = Vector2(0, 0)
 
 var _motion = Vector2()
 var _apply_drag = false
@@ -63,9 +65,9 @@ func _physics_process(delta):
     if _jumping and _motion.y > 0:
         _jumping = false
 
-    var snap = Vector2(0, 32)
+    var snap = SNAP_TO_FLOOR
 
     if _jumping:
-        snap = Vector2(0, 0)
+        snap = NO_SNAP
 
     _motion = move_and_slide_with_snap(_motion, snap, UP)
