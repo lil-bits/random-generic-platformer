@@ -17,6 +17,7 @@ _data = {
 id = "1-1"
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
+position = Vector2( 0, -512 )
 tile_set = ExtResource( 2 )
 collision_use_kinematic = true
 collision_layer = 4
@@ -28,38 +29,39 @@ __meta__ = {
 }
 
 [node name="Player" parent="." index="3"]
-position = Vector2( 352, 224 )
+position = Vector2( 352, -288 )
 
 [node name="CoinSpawner" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( -4.2253, -508.171 )
 curve = SubResource( 1 )
 coin_scene = ExtResource( 4 )
 
 [node name="TrapSpike" parent="." index="5" instance=ExtResource( 5 )]
-position = Vector2( 224, 416 )
+position = Vector2( 224, -96 )
 time_initial_delay = 0.6
 
 [node name="TrapSpike2" parent="." index="6" instance=ExtResource( 5 )]
-position = Vector2( 288, 416 )
+position = Vector2( 288, -96 )
 time_initial_delay = 0.4
 
 [node name="TrapSpike3" parent="." index="7" instance=ExtResource( 5 )]
-position = Vector2( 352, 416 )
+position = Vector2( 352, -96 )
 time_initial_delay = 0.2
 
 [node name="TrapSpike4" parent="." index="8" instance=ExtResource( 5 )]
-position = Vector2( 416, 416 )
+position = Vector2( 416, -96 )
 
 [node name="TrapSpike5" parent="." index="9" instance=ExtResource( 5 )]
-position = Vector2( 672, 32 )
+position = Vector2( 672, -480 )
 time_initial_delay = 0.8
 
 [node name="TrapSpike6" parent="." index="10" instance=ExtResource( 5 )]
-position = Vector2( 224, 32 )
+position = Vector2( 224, -480 )
 time_initial_delay = 1.0
 
 [node name="LevelExit" parent="." index="11"]
-position = Vector2( 32, 288 )
+position = Vector2( 32, -224 )
 
 [node name="FireballSpawner" parent="." index="12" instance=ExtResource( 6 )]
-position = Vector2( 432, 160 )
+position = Vector2( 432, -352 )
 
