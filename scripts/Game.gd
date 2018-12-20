@@ -29,7 +29,7 @@ var save_slots = [
 ]
 var current_save_slot_id = 0
 
-func save_level_progress(level_id, coins):
+func save_current_level_progress(coins):
     var current_save_slot = save_slots[current_save_slot_id]
 
     if current_save_slot.levels.has(Game.current_level_id):

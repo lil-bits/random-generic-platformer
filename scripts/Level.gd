@@ -41,7 +41,7 @@ func _increment_coins():
     $HUD.update_values({"coins": coins})
 
 func _on_level_finished():
-    Game.save_level_progress(Game.current_level_id, coins)
+    Game.save_current_level_progress(coins)
     get_tree().call_deferred("change_scene", "res://scenes/world/World.tscn")
 
 func _on_menu_activated():
