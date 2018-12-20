@@ -20,6 +20,9 @@ func _ready():
     for coin in get_tree().get_nodes_in_group("coins"):
         coin.connect("coin_taken", self, "_increment_coins")
 
+    for spawner in get_tree().get_nodes_in_group("spawners"):
+        spawner.connect("spawned", self, "_spawned_enemy")
+
     $LevelExit.connect("level_finished", self, "_on_level_finished")
     $LevelMenu.connect("menu_activated", self, "_on_menu_activated")
     $LevelMenu.connect("menu_deactivated", self, "_on_menu_deactivated")
@@ -49,3 +52,6 @@ func _on_menu_deactivated():
 
 func _on_level_exited():
     get_tree().call_deferred("change_scene", "res://scenes/world/World.tscn")
+
+func _spawned_enemy(enemy):
+    enemy.connect("enemy_touched", self, "_on_enemy_touched")
