@@ -2,6 +2,7 @@ extends Node
 
 export(String) var id
 
+const BOTTOM_WORLD_LIMIT = 100
 var coins = 0
 
 func _ready():
@@ -25,6 +26,10 @@ func _ready():
     $LevelMenu.connect("level_exited", self, "_on_level_exited")
 
     $HUD.show_start_level_message(Game.get_current_level().name)
+
+func _physics_process(_delta):
+    if ($Player.position.y > BOTTOM_WORLD_LIMIT):
+        get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
 
 func _on_trap_triggered():
     get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
