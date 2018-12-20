@@ -5,10 +5,6 @@ export(String) var id
 var coins = 0
 
 func _ready():
-    assert(has_node("Player"))
-    assert(has_node("HUD"))
-    assert(has_node("LevelExit"))
-
     Game.current_level_id = id
 
     for enemy in get_tree().get_nodes_in_group("enemies"):
