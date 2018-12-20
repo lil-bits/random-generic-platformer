@@ -20,8 +20,8 @@ func _ready():
     connect("body_entered", self, "_on_area_entered")
     connect("body_exited", self, "_on_area_exited")
 
-func _on_area_entered(body):
+func _on_area_entered(_body):
     emit_signal("level_area_entered", level_id)
 
-func _on_area_exited(body):
+func _on_area_exited(_body):
     emit_signal("level_area_exited")

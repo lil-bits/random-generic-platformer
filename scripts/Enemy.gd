@@ -14,7 +14,7 @@ func _ready():
 
     $Area2D.connect("body_entered", self, "_on_body_entered")
 
-func _physics_process(delta):
+func _physics_process(_delta):
     if is_on_wall() or not $RayCast2D.is_colliding():
         _direction *= -1
         $RayCast2D.position.x *= -1
@@ -24,5 +24,5 @@ func _physics_process(delta):
 
     _motion = move_and_slide(_motion, UP)
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
     emit_signal("enemy_touched")

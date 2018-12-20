@@ -21,7 +21,7 @@ func _ready():
 
     $HUD.update_values({ "coins": Game.count_coins_in_current_save_slot() })
 
-func _process(delta):
+func _process(_delta):
     if active_level:
         var enter_level = Input.is_action_just_pressed("ui_select")
 

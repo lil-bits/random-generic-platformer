@@ -22,7 +22,7 @@ func _ready():
     else:
         _restart_timer_with(time_initial_delay)
 
-func _physics_process(delta):
+func _physics_process(_delta):
     if _state == TrapSpikeState.Enabled:
         for body in self.get_overlapping_bodies():
             emit_signal("trap_triggered")

@@ -17,7 +17,7 @@ var _motion = Vector2()
 var _apply_drag = false
 var _jumping = false
 
-func _process(delta):
+func _process(_delta):
     if _apply_drag or _motion.x == 0:
         $AnimatedSprite.play("Idle")
     elif _motion.x > 0:

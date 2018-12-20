@@ -5,5 +5,5 @@ signal level_finished
 func _ready():
     self.connect("body_entered", self, "_on_body_entered")
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
     emit_signal("level_finished")
