@@ -2,6 +2,8 @@ extends Node
 
 export(String) var id
 
+onready var checkpoint = $Checkpoints/InitialCheckpoint
+const Player = preload("res://scenes/Player.tscn")
 const BOTTOM_WORLD_LIMIT = 100
 var coins = 0
 
@@ -26,6 +28,8 @@ func _ready():
     $LevelMenu.connect("level_exited", self, "_on_level_exited")
 
     $HUD.show_start_level_message(Game.get_current_level().name)
+
+    _spawn_player()
 
 func _physics_process(_delta):
     if ($Player.position.y > BOTTOM_WORLD_LIMIT):
@@ -56,3 +60,10 @@ func _on_level_exited():
 
 func _spawned_enemy(enemy):
     enemy.connect("enemy_touched", self, "_on_enemy_touched")
+
+func _spawn_player():
+    var player = Player.instance()
+    player.name = "Player"
+    player.global_position = checkpoint.get_spawner_global_position()
+
+    self.add_child(player, true)
