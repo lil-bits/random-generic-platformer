@@ -13,9 +13,6 @@ func _ready():
     for enemy in get_tree().get_nodes_in_group("enemies"):
         enemy.connect("enemy_touched", self, "_on_enemy_touched")
 
-    for trap in get_tree().get_nodes_in_group("traps"):
-        trap.connect("trap_triggered", self, "_on_trap_triggered")
-
     for coin in get_tree().get_nodes_in_group("coins"):
         coin.connect("coin_taken", self, "_increment_coins")
 
@@ -34,9 +31,6 @@ func _ready():
 func _physics_process(_delta):
     if ($Player.position.y > BOTTOM_WORLD_LIMIT):
         get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
-
-func _on_trap_triggered():
-    get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
 
 func _on_enemy_touched():
     get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
