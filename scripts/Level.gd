@@ -19,6 +19,9 @@ func _ready():
     for spawner in get_tree().get_nodes_in_group("spawners"):
         spawner.connect("spawned", self, "_spawned_enemy")
 
+    for checkpoint in get_tree().get_nodes_in_group("checkpoints"):
+        checkpoint.connect("checkpoint_reached", self, "_on_checkpoint_reached")
+
     $LevelExit.connect("level_finished", self, "_on_level_finished")
     $LevelMenu.connect("menu_activated", self, "_on_menu_activated")
     $LevelMenu.connect("menu_deactivated", self, "_on_menu_deactivated")
@@ -61,3 +64,8 @@ func _spawn_player():
     player.global_position = checkpoint.get_spawner_global_position()
 
     self.add_child(player, true)
+
+func _on_checkpoint_reached(reached_checkpoint):
+    checkpoint = reached_checkpoint
+
+    reached_checkpoint.get_node("SaveArea").set_deferred("monitoring", false)
