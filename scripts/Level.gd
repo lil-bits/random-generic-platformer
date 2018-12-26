@@ -36,7 +36,7 @@ func _physics_process(_delta):
         _on_enemy_touched()
 
 func _on_enemy_touched():
-    get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
+    $Player.position = checkpoint.get_spawner_global_position()
 
 func _increment_coins():
     coins += 1
