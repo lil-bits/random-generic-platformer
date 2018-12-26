@@ -30,7 +30,7 @@ func _ready():
 
 func _physics_process(_delta):
     if ($Player.position.y > BOTTOM_WORLD_LIMIT):
-        get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
+        _on_enemy_touched()
 
 func _on_enemy_touched():
     get_tree().call_deferred("change_scene", "res://scenes/StartMenu.tscn")
