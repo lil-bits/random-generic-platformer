@@ -23,6 +23,23 @@ func _ready():
     else:
         _restart_timer_with(time_initial_delay)
 
+func serialize():
+    return {
+        "file": get_filename(),
+        "position": global_position,
+        "time_initial_delay": time_initial_delay,
+        "time_disabled": time_disabled,
+        "time_fade_in": time_fade_in,
+        "time_enabled": time_enabled,
+    }
+
+func deserialize(properties):
+    global_position = properties.position
+    time_initial_delay = properties.time_initial_delay
+    time_disabled = properties.time_disabled
+    time_fade_in = properties.time_fade_in
+    time_enabled = properties.time_enabled
+
 func _physics_process(_delta):
     if _state == TrapSpikeState.Enabled:
         for body in self.get_overlapping_bodies():

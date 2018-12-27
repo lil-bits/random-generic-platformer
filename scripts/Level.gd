@@ -6,6 +6,10 @@ onready var checkpoint = $Checkpoints/InitialCheckpoint
 const Player = preload("res://scenes/Player.tscn")
 const BOTTOM_WORLD_LIMIT = 100
 var coins = 0
+var checkpoint_data = {
+    "coins": 0,
+    "scenes": [],
+}
 
 func _ready():
     Game.current_level_id = id
@@ -36,7 +40,31 @@ func _physics_process(_delta):
         _on_enemy_touched()
 
 func _on_enemy_touched():
+    var coin_scenes = get_tree().get_nodes_in_group("coins")
+    var enemy_scenes = get_tree().get_nodes_in_group("enemies")
+
+    for coin_scene in coin_scenes:
+        coin_scene.queue_free()
+
+    for enemy_scene in enemy_scenes:
+        enemy_scene.queue_free()
+
+    for scene_properties in checkpoint_data.scenes:
+        var packed_scene = load(scene_properties.file)
+        var scene_instance = packed_scene.instance()
+
+        scene_instance.deserialize(scene_properties)
+
+        if scene_instance.get_script().has_script_signal("enemy_touched"):
+            scene_instance.connect("enemy_touched", self, "_on_enemy_touched")
+        elif scene_instance.get_script().has_script_signal("coin_taken"):
+            scene_instance.connect("coin_taken", self, "_increment_coins")
+
+        add_child(scene_instance)
+
     $Player.position = checkpoint.get_spawner_global_position()
+    coins = checkpoint_data.coins
+    $HUD.update_values({"coins": coins})
 
 func _increment_coins():
     coins += 1
@@ -69,3 +97,16 @@ func _on_checkpoint_reached(reached_checkpoint):
     checkpoint = reached_checkpoint
 
     reached_checkpoint.get_node("SaveArea").set_deferred("monitoring", false)
+
+    var enemy_scenes = get_tree().get_nodes_in_group("enemies")
+    var coin_scenes = get_tree().get_nodes_in_group("coins")
+
+    checkpoint_data.coins = coins
+    checkpoint_data.scenes = []
+
+    for coin_scene in coin_scenes:
+        checkpoint_data.scenes.append(coin_scene.serialize())
+
+    for enemy_scene in enemy_scenes:
+        if enemy_scene.has_method("serialize"):
+            checkpoint_data.scenes.append(enemy_scene.serialize())

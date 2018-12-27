@@ -19,8 +19,5 @@ script = ExtResource( 1 )
 
 [node name="InitialCheckpoint" parent="Checkpoints" instance=ExtResource( 5 )]
 
-[node name="SaveArea" parent="Checkpoints/InitialCheckpoint" index="0"]
-monitoring = false
-
 
 [editable path="Checkpoints/InitialCheckpoint"]
