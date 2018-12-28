@@ -14,6 +14,15 @@ func _ready():
 
     $Area2D.connect("body_entered", self, "_on_body_entered")
 
+func serialize():
+    return {
+        "file": get_filename(),
+        "position": global_position,
+    }
+
+func deserialize(properties):
+    global_position = properties.position
+
 func _physics_process(_delta):
     if is_on_wall() or not $RayCast2D.is_colliding():
         _direction *= -1
