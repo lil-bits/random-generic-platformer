@@ -23,4 +23,3 @@ process_mode = 0
 wait_time = 9.08
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

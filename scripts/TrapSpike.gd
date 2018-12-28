@@ -18,8 +18,10 @@ var _state = TrapSpikeState.Disabled
 func _ready():
     add_to_group("enemies")
 
+    $Timer.connect("timeout", self, "_on_timer_timeout")
+
     if time_initial_delay == 0.0:
-        _on_Timer_timeout()
+        _on_timer_timeout()
     else:
         _restart_timer_with(time_initial_delay)
 
@@ -65,7 +67,7 @@ func _restart_timer_with(time):
     $Timer.set_wait_time(time)
     $Timer.start()
 
-func _on_Timer_timeout():
+func _on_timer_timeout():
     match _state:
         TrapSpikeState.Disabled:
             _go_to_fade_in()
