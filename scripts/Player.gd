@@ -71,3 +71,14 @@ func _physics_process(delta):
         snap = NO_SNAP
 
     _motion = move_and_slide_with_snap(_motion, snap, UP)
+
+func die():
+    _motion = Vector2(0, 0)
+    $CollisionShape2D.disabled = true
+    $AnimatedSprite.rotation_degrees = 90
+    set_physics_process(false)
+
+func live():
+    $CollisionShape2D.disabled = false
+    $AnimatedSprite.rotation_degrees = 0
+    set_physics_process(true)

@@ -26,6 +26,8 @@ func _ready():
     for checkpoint in get_tree().get_nodes_in_group("checkpoints"):
         checkpoint.connect("checkpoint_reached", self, "_on_checkpoint_reached")
 
+    $DeathTimer.connect("timeout", self, "_load_checkpoint_state")
+
     $LevelExit.connect("level_finished", self, "_on_level_finished")
     $LevelMenu.connect("menu_activated", self, "_on_menu_activated")
     $LevelMenu.connect("menu_deactivated", self, "_on_menu_deactivated")
@@ -40,14 +42,12 @@ func _physics_process(_delta):
         _on_enemy_touched()
 
 func _on_enemy_touched():
-    var coin_scenes = get_tree().get_nodes_in_group("coins")
-    var enemy_scenes = get_tree().get_nodes_in_group("enemies")
+    $Player.call_deferred("die")
+    $DeathTimer.start()
 
-    for coin_scene in coin_scenes:
-        coin_scene.queue_free()
-
-    for enemy_scene in enemy_scenes:
-        enemy_scene.queue_free()
+func _load_checkpoint_state():
+    get_tree().call_group("coins", "queue_free")
+    get_tree().call_group("enemies", "queue_free")
 
     for scene_properties in checkpoint_data.scenes:
         var packed_scene = load(scene_properties.file)
@@ -63,6 +63,7 @@ func _on_enemy_touched():
         add_child(scene_instance)
 
     $Player.position = checkpoint.get_spawner_global_position()
+    $Player.live()
     coins = checkpoint_data.coins
     $HUD.update_values({"coins": coins})
 
