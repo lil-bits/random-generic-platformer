@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/grassland.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 8, 8 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GrassLeft" type="Sprite" parent="."]
+position = Vector2( -32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 160, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GrassLeft"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassLeft/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="GrassRight" type="Sprite" parent="."]
+position = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 160, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GrassRight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassRight/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Grass1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 160, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Grass1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Grass2" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 160, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Grass2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass2/StaticBody2D"]
+shape = SubResource( 1 )
+
