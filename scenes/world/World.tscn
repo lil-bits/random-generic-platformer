@@ -23,15 +23,5 @@ position = Vector2( 156, 88 )
 level_id = "1-1"
 texture = ExtResource( 5 )
 
-[node name="1-2" parent="Levels" instance=ExtResource( 4 )]
-position = Vector2( 296, 90 )
-level_id = "1-2"
-texture = ExtResource( 5 )
-
-[node name="1-3" parent="Levels" instance=ExtResource( 4 )]
-position = Vector2( 418, 192 )
-level_id = "1-3"
-texture = ExtResource( 5 )
-
 [node name="WorldMenu" parent="." instance=ExtResource( 6 )]
 
