@@ -4,13 +4,13 @@ const Math = preload("res://scripts/Math.gd")
 
 const UP = Vector2(0.0, -1.0)
 const GRAVITY = 20
-const MAX_SPEED = 200
-const ACCELERATION = 50
-const JUMP_HEIGHT_LOW = -420
-const JUMP_HEIGHT_HIGH = -550
+const MAX_SPEED = 150
+const ACCELERATION = 20
+const JUMP_HEIGHT_LOW = -250
+const JUMP_HEIGHT_HIGH = -300
 const DRAG_FACTOR_LAND = 0.0001
 const DRAG_FACTOR_AIR = 0.1
-const SNAP_TO_FLOOR = Vector2(0, 32)
+const SNAP_TO_FLOOR = Vector2(0, 4)
 const NO_SNAP = Vector2(0, 0)
 
 var _motion = Vector2()
