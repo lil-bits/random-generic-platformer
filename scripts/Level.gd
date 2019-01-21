@@ -42,8 +42,9 @@ func _physics_process(_delta):
         _on_enemy_touched()
 
 func _on_enemy_touched():
-    $Player.call_deferred("die")
-    $DeathTimer.start()
+    if $Player.alive:
+        $Player.call_deferred("die")
+        $DeathTimer.start()
 
 func _load_checkpoint_state():
     get_tree().call_group("coins", "queue_free")

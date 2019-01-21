@@ -13,6 +13,7 @@ const DRAG_FACTOR_AIR = 0.1
 const SNAP_TO_FLOOR = Vector2(0, 4)
 const NO_SNAP = Vector2(0, 0)
 
+var alive = true
 var _motion = Vector2()
 var _apply_drag = false
 var _jumping = false
@@ -73,12 +74,14 @@ func _physics_process(delta):
     _motion = move_and_slide_with_snap(_motion, snap, UP)
 
 func die():
+    alive = false
     _motion = Vector2(0, 0)
     $CollisionShape2D.disabled = true
     $AnimatedSprite.rotation_degrees = 90
     set_physics_process(false)
 
 func live():
+    alive = true
     $CollisionShape2D.disabled = false
     $AnimatedSprite.rotation_degrees = 0
     set_physics_process(true)
