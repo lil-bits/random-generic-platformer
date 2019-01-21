@@ -28,7 +28,13 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/size/width=480
+window/size/height=320
 window/size/resizable=false
+window/size/test_width=1024
+window/size/test_height=768
+window/dpi/allow_hidpi=true
+window/stretch/mode="viewport"
 
 [importer_defaults]
 
@@ -93,4 +99,5 @@ ui_down={
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

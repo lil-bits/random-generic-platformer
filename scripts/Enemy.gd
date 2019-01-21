@@ -4,7 +4,7 @@ signal enemy_touched
 
 const UP = Vector2(0.0, -1.0)
 const GRAVITY = 20
-const SPEED = 200
+const SPEED = 100
 
 var _direction = 1
 var _motion = Vector2()
