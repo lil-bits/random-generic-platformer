@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 
 [node name="InitialCheckpoint" parent="Checkpoints" instance=ExtResource( 5 )]
 
-[node name="DeathTimer" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="."]
 one_shot = true
 
 

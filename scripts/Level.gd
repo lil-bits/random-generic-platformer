@@ -26,7 +26,7 @@ func _ready():
     for checkpoint in get_tree().get_nodes_in_group("checkpoints"):
         checkpoint.connect("checkpoint_reached", self, "_on_checkpoint_reached")
 
-    $DeathTimer.connect("timeout", self, "_load_checkpoint_state")
+    $RespawnTimer.connect("timeout", self, "_load_checkpoint_state")
 
     $LevelExit.connect("level_finished", self, "_on_level_finished")
     $LevelMenu.connect("menu_activated", self, "_on_menu_activated")
@@ -44,7 +44,7 @@ func _physics_process(_delta):
 func _on_enemy_touched():
     if $Player.alive:
         $Player.call_deferred("die")
-        $DeathTimer.start()
+        $RespawnTimer.start()
 
 func _load_checkpoint_state():
     get_tree().call_group("coins", "queue_free")
