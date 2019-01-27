@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Level.tscn" type="PackedScene" id=1]
-[ext_resource path="res://environment/Grassland.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/MovingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/TrapSpike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/MovingPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://environment/Grassland.tres" type="TileSet" id=5]
+[ext_resource path="res://environment/CommonTileMap.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 20, 31 )
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=3]
 
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 16, 8, 0, 0, 0, 0, 88, 8 )
@@ -38,23 +39,28 @@ shape = SubResource( 1 )
 [node name="Spawner" parent="Checkpoints/InitialCheckpoint" index="1"]
 position = Vector2( 0.0874329, 3.90649 )
 
-[node name="Land" type="TileMap" parent="." index="5"]
-tile_set = ExtResource( 2 )
+[node name="Enemy" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 280, -56 )
+
+[node name="TrapSpike" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 184, -56 )
+
+[node name="MovingPlatform" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 232, -96 )
+curve = SubResource( 3 )
+
+[node name="Environment" type="Node2D" parent="." index="8"]
+
+[node name="Land" type="TileMap" parent="Environment" index="0"]
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -327668, 1, 0, -262132, 1, 0, -196601, 0, 0, -196600, 2, 0, -196599, 1, 0, -196598, 1, 0, -196597, 1, 0, -196596, 2, 0, -196595, 1, 0, -196594, 2, 0, -196593, 1, 0, -196592, 2, 0, -196591, 1, 0, -196590, 2, 0, -196589, 1, 0, -196588, 2, 0, -196587, 2, 0, -196586, 1, 0, -196585, 2, 0, -196584, 2, 0 )
+tile_data = PoolIntArray( -327668, 1, 0, -262132, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -196602, 1, 0, -196601, 0, 0, -196600, 2, 0, -196599, 1, 0, -196598, 1, 0, -196597, 1, 0, -196596, 2, 0, -196595, 1, 0, -196594, 2, 0, -196593, 1, 0, -196592, 2, 0, -196591, 1, 0, -196590, 2, 0, -196589, 1, 0, -196588, 2, 0, -196587, 2, 0, -196586, 1, 0, -196585, 2, 0, -196584, 2, 0 )
 
-[node name="Enemy" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( 280, -56 )
-
-[node name="TrapSpike" parent="." index="7" instance=ExtResource( 4 )]
-position = Vector2( 184, -56 )
-
-[node name="MovingPlatform" parent="." index="8" instance=ExtResource( 5 )]
-position = Vector2( 232, -96 )
-curve = SubResource( 2 )
+[node name="CommonTileMap" parent="Environment" index="1" instance=ExtResource( 6 )]
+tile_data = PoolIntArray( -589825, 0, 0, -524289, 0, 0, -458753, 0, 0, -393217, 0, 0, -327681, 0, 0, -262145, 0, 0, -196609, 0, 0 )
 
 
 [editable path="Checkpoints/InitialCheckpoint"]
