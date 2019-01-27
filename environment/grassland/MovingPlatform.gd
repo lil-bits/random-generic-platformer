@@ -1,8 +1,17 @@
+tool
 extends Path2D
 
-export var SPEED = 100
+export var speed = 20
 
 func _ready():
+    if not curve:
+        curve = Curve2D.new()
+        curve.add_point(Vector2(0, 0))
+        curve.add_point(Vector2(16 * 2, 0))
+
+    if Engine.is_editor_hint():
+        return
+
     assert(curve.get_point_count() == 2)
 
     var first_point = curve.get_point_position(0)
@@ -10,7 +19,7 @@ func _ready():
     var curve_length = curve.get_baked_length()
 
     # Animation is there and back, so we have to multiply it by 2
-    var animation_length = curve_length * 2 / SPEED
+    var animation_length = curve_length * 2 / speed
 
     var movement_animation = Animation.new()
     movement_animation.length = animation_length

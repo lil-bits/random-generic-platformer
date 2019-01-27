@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grassland.png-9633c0c5560ed72ed02485fce347c124.stex"
+path="res://.import/grassland.png-e3ce0614c89f2f31ff84b8e199e9bd51.stex"
 
 [deps]
 
-source_file="res://environment/grassland.png"
-dest_files=[ "res://.import/grassland.png-9633c0c5560ed72ed02485fce347c124.stex" ]
+source_file="res://environment/grassland/grassland.png"
+dest_files=[ "res://.import/grassland.png-e3ce0614c89f2f31ff84b8e199e9bd51.stex" ]
 
 [params]
 

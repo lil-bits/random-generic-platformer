@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/MovingPlatform.gd" type="Script" id=1]
-[ext_resource path="res://environment/Grassland.tres" type="TileSet" id=2]
+[ext_resource path="res://environment/grassland/MovingPlatform.gd" type="Script" id=1]
+[ext_resource path="res://environment/grassland/Grassland.tres" type="TileSet" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -10,7 +10,6 @@ extents = Vector2( 24, 8 )
 [node name="MovingPlatform" type="Path2D"]
 curve = null
 script = ExtResource( 1 )
-SPEED = 50
 
 [node name="Platform" type="KinematicBody2D" parent="."]
 collision_layer = 4
@@ -31,4 +30,3 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
-
