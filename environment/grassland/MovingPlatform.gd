@@ -4,10 +4,11 @@ extends Path2D
 export var speed = 20
 
 func _ready():
-    if not curve:
-        curve = Curve2D.new()
-        curve.add_point(Vector2(0, 0))
-        curve.add_point(Vector2(16 * 2, 0))
+    if is_instanced():
+        if not curve:
+            curve = Curve2D.new()
+            curve.add_point(Vector2(0, 0))
+            curve.add_point(Vector2(16 * 2, 0))
 
     if Engine.is_editor_hint():
         return
@@ -35,3 +36,6 @@ func _ready():
     $AnimationPlayer.add_animation(animation_name, movement_animation)
     $AnimationPlayer.playback_speed = 1
     $AnimationPlayer.play(animation_name)
+
+func is_instanced():
+    return self != get_tree().edited_scene_root
